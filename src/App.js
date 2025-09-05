@@ -2,6 +2,46 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+function BasicUserForm() {
+  const [fullName, setFullName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Name:', fullName);
+    console.log('Phone Number:', phoneNumber);
+    console.log('Email:', email);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <labelFullName:</label>
+      <input
+        type="text"
+        value={fullName}
+        onChange={(event) => setFullName(event.target.value)}
+      />
+      <br />
+      <label>Phone Number:</label>
+      <input
+        type="tel"
+        value={phoneNumber}
+        onChange={(event) => setPhoneNumber(event.target.value)}
+      />
+      <br />
+      <label>Email:</label>
+      <input
+        type="email"
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+      />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [count, setCount] = useState(0);
@@ -33,6 +73,7 @@ function App() {
           Toggle Dark Mode
         </button>
       </header>
+      <BasicUserForm />
       <div className="footer">
         <div className="center-footer">
           <button className="count-button" onClick={handleIncrementCount}>
