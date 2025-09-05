@@ -4,6 +4,15 @@ import './App.css';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const [count, setCount] = useState(0);
+
+  const handleToggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  const handleIncrementCount = () => {
+    setCount(count + 1);
+  };
 
   return (
     <div className={darkMode ? "App dark-mode" : "App"}>
@@ -20,10 +29,18 @@ function App() {
         >
           Learn React...
         </a>
-        <button className="toggle-button" onClick={() => setDarkMode(!darkMode)}>
+        <button className="toggle-button" onClick={handleToggleDarkMode}>
           Toggle Dark Mode
         </button>
       </header>
+      <div className="footer">
+        <div className="center-footer">
+          <button className="count-button" onClick={handleIncrementCount}>
+            Increment Count
+          </button>
+          <p>Count: {count}</p>
+        </div>
+      </div>
     </div>
   );
 }
