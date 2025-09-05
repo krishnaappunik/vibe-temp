@@ -25,10 +25,62 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <style>
+      body {
+        transition: background-color 0.3s ease-in-out;
+      }
+      .dark-mode-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+      <span> Toggle Dark Mode </span>
+    </button>
+    <div class="dark-mode-container">
+      <input type="checkbox" id="dark-mode-checkbox" hidden />
+      <label for="dark-mode-checkbox">
+        <span> </span>
+        <span> </span>
+        <span> </span>
+      </label>
+    </div>
     <div id="root"></div>
+    <script>
+      function toggleDarkMode() {
+        const body = document.body;
+        const checkbox = document.getElementById('dark-mode-checkbox');
+        const darkModeContainer = document.querySelector('.dark-mode-container');
+        darkModeContainer.classList.toggle('active');
+
+        if (checkbox.checked) {
+          body.classList.add('dark-mode');
+        } else {
+          body.classList.remove('dark-mode');
+        }
+      }
+      function checkDarkModePreference() {
+        const darkModePreference = window.localStorage.getItem('darkMode');
+        if (darkModePreference === 'true') {
+          document.body.classList.add('dark-mode');
+          document.querySelector('.dark-mode-container').classList.add('active');
+          document.getElementById('dark-mode-checkbox').checked = true;
+        }
+      }
+      checkDarkModePreference();
+      document.addEventListener('click', () => {
+        const body = document.body;
+        const checkbox = document.getElementById('dark-mode-checkbox');
+        if (document.querySelector('.dark-mode-container').classList.contains('active')) {
+          body.classList.toggle('dark-mode');
+        }
+      });
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
