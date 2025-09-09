@@ -16,7 +16,7 @@ function BasicUserForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <labelFullName:</label>
+      <label>FullName:</label>
       <input
         type="text"
         value={fullName}
@@ -75,6 +75,63 @@ function UserTable() {
   );
 }
 
+function LoginForm() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [verification, setVerification] = useState('');
+
+  const handleChange = (event) => {
+    if (event.target.name === "username") {
+      setUsername(event.target.value);
+    } else if (event.target.name === "password") {
+      setPassword(event.target.value);
+    } else if (event.target.name === "verification") {
+      setVerification(event.target.value);
+    }
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (verification === password) {
+      console.log('Username:', username);
+      console.log('Password:', password);
+      console.log('Verification:', verification);
+    } else {
+      console.log('Passwords do not match');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Username:</label>
+      <input
+        type="text"
+        name="username"
+        value={username}
+        onChange={handleChange}
+      />
+      <br />
+      <label>Password:</label>
+      <input
+        type="password"
+        name="password"
+        value={password}
+        onChange={handleChange}
+      />
+      <br />
+      <label>Verification:</label>
+      <input
+        type="password"
+        name="verification"
+        value={verification}
+        onChange={handleChange}
+      />
+      <br />
+      <button type="submit">Login</button>
+    </form>
+  );
+}
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [count, setCount] = useState(0);
@@ -108,13 +165,14 @@ function App() {
       </header>
       <BasicUserForm />
       <UserTable />
+      <LoginForm />
       <div className="footer">
-        <div className="center-footer">
+        <form onSubmit={(event) => event.preventDefault()}>
           <button className="count-button" onClick={handleIncrementCount}>
             Increment Count
           </button>
           <p>Count: {count}</p>
-        </div>
+        </form>
       </div>
     </div>
   );
