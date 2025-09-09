@@ -162,6 +162,20 @@ function App() {
         <button className="toggle-button" onClick={handleToggleDarkMode}>
           Toggle Dark Mode
         </button>
+        {/* Add toggle button for dark and light mode */}
+        <input
+          className="checkbox"
+          type="checkbox"
+          id="toggle-checkbox"
+          checked={darkMode}
+          onChange={handleToggleDarkMode}
+        />
+        <label className="toggle-label" htmlFor="toggle-checkbox">Theme</label>
+        {darkMode ? (
+          <span className="toggle-switch-on">On</span>
+        ) : (
+          <span className="toggle-switch-off">Off</span>
+        )}
       </header>
       <BasicUserForm />
       <UserTable />
