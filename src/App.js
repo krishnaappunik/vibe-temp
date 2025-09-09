@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import AuthService from './services/AuthService'; // Import AuthService
 
 function BasicUserForm() {
   const [fullName, setFullName] = useState('');
@@ -79,6 +80,7 @@ function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [verification, setVerification] = useState('');
+  const [error, setError] = useState(null);
 
   const handleChange = (event) => {
     if (event.target.name === "username") {
@@ -93,11 +95,16 @@ function LoginForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (verification === password) {
-      console.log('Username:', username);
-      console.log('Password:', password);
-      console.log('Verification:', verification);
+      AuthService.login({ username, password })
+        .then(() => {
+          console.log('Login successful');
+          window.location.href = '/home'; // Redirect to home page on login
+        })
+        .catch(error => {
+          setError(error.message);
+        });
     } else {
-      console.log('Passwords do not match');
+      setError('Passwords do not match');
     }
   };
 
@@ -127,6 +134,7 @@ function LoginForm() {
         onChange={handleChange}
       />
       <br />
+      {error && <p style={{ color: 'red' }}>{error}</p>} // Display error message
       <button type="submit">Login</button>
     </form>
   );
@@ -135,6 +143,7 @@ function LoginForm() {
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [count, setCount] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Add isLoggedIn state
 
   const handleToggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -143,6 +152,14 @@ function App() {
   const handleIncrementCount = () => {
     setCount(count + 1);
   };
+
+  AuthService.onLoginCallback(user => { // Listen for login callback
+    setIsLoggedIn(true);
+  });
+
+  AuthService.onLogoutCallback(() => { // Listen for logout callback
+    setIsLoggedIn(false);
+  });
 
   return (
     <div className={darkMode ? "App dark-mode" : "App"}>
@@ -176,18 +193,32 @@ function App() {
         ) : (
           <span className="toggle-switch-off">Off</span>
         )}
+        {isLoggedIn ? ( // Display login status
+          <span style={{ color: 'green' }}>Logged In</span>
+        ) : (
+          <span style={{ color: 'red' }}>Logged Out</span>
+        )}
       </header>
       <BasicUserForm />
       <UserTable />
       <LoginForm />
-      <div className="footer">
-        <form onSubmit={(event) => event.preventDefault()}>
-          <button className="count-button" onClick={handleIncrementCount}>
-            Increment Count
-          </button>
-          <p>Count: {count}</p>
-        </form>
-      </div>
+      {isLoggedIn ? ( // Display only when logged in
+        <div>
+          <button onClick={() => AuthService.logout()}>Logout</button>
+          <button onClick={() => window.location.href = "/dashboard"}>Dashboard</button>
+        </div>
+      ) : (
+        <div className="footer">
+          <form onSubmit={(event) => event.preventDefault()}>
+            <button className="count-button" onClick={handleIncrementCount}>
+              Increment Count
+            </button>
+            <p>Count: {count}</p>
+          </form>
+          <button onClick={() => window.location.href = "/login"}>Login</button> {/* Add login route */}
+          <button onClick={() => window.location.href = "/register"}>Register</button> {/* Add register route */}
+        </div>
+      )}
     </div>
   );
 }
