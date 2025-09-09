@@ -90,7 +90,7 @@
 }
 
 .App-link:active {
-    color: white;
+  color: white;
 }
 
 .App-link {
@@ -98,7 +98,7 @@
 }
 
 .App-link:visited {
-    color: white;
+  color: white;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -149,4 +149,46 @@
 
 .count-button:hover {
   background-color: #3e8e41;
+}
+
+.user-table-container {
+  width: 80%;
+  margin: 50px auto;
+  border-collapse: collapse;
+}
+
+.user-table-container th, .user-table-container td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.user-table-container th {
+  background-color: #f0f0f0;
+}
+
+.user-table {
+  width: 100%;
+}
+
+.username-column {
+  width: 30%;
+}
+
+.email-column {
+  width: 30%;
+}
+
+.phone-column {
+  width: 20%;
+}
+
+.description-column {
+  width: 20%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+table {
+  font-family: 'Quicksand', sans-serif;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -42,6 +42,39 @@ function BasicUserForm() {
   );
 }
 
+function UserTable() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/users')
+      .then(response => response.json())
+      .then(data => setUsers(data));
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('User List:', users);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <button type="submit">Fetch User List</button>
+      </form>
+      <ul>
+        {users.map((user, index) => (
+          <li key={index}>
+            <p>Username: {user.username}</p>
+            <p>Phone Number: {user.phoneNumber}</p>
+            <p>Email: {user.email}</p>
+            <p>Description: {user.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [count, setCount] = useState(0);
@@ -74,6 +107,7 @@ function App() {
         </button>
       </header>
       <BasicUserForm />
+      <UserTable />
       <div className="footer">
         <div className="center-footer">
           <button className="count-button" onClick={handleIncrementCount}>
