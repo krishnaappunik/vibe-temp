@@ -35,6 +35,12 @@
         right: 20px;
         cursor: pointer;
       }
+      .dark-mode-toggle .button {
+        color: #fff;
+      }
+      .dark-mode-toggle .button.dark {
+        color: #000;
+      }
       .login-form {
         position: absolute;
         top: 50%;
@@ -52,19 +58,40 @@
         font-size: 14px;
         margin-top: 10px;
       }
+      .theme-toggle-switch {
+        position: relative;
+        width: 60px;
+        height: 30px;
+        border-radius: 30px;
+        background-color: #c0c0c0;
+        transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+      }
+      .theme-toggle-switch span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 60%;
+        width: 60%;
+        background-color: #ccc;
+        border-radius: 30px;
+        transition: background-color 0.3s ease-in-out;
+      }
+      .theme-toggle-switch .dark span {
+        background-color: #000;
+      }
     </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <button class="dark-mode-toggle" onclick="toggleDarkMode()">
-      <span> Toggle Dark Mode </span>
+      <span class="button"> Toggle Dark Mode </span>
     </button>
     <div class="dark-mode-container">
       <input type="checkbox" id="dark-mode-checkbox" hidden />
       <label for="dark-mode-checkbox">
-        <span> </span>
-        <span> </span>
-        <span> </span>
+        <div class="theme-toggle-switch">
+          <span></span>
+        </div>
       </label>
     </div>
     <div class="login-form">
