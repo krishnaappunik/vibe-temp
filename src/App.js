@@ -4,6 +4,17 @@ import './App.css';
 import AuthService from './services/AuthService'; // Import AuthService
 import ReactDom from 'react-dom'; // Import ReactDom
 
+// Simple Button Component
+class SimpleButton extends React.Component {
+  render() {
+    return (
+      <button className="simple-button" type="button" onClick={this.props.onClick}>
+        {this.props.children}
+      </button>
+    );
+  }
+}
+
 function BasicUserForm() {
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -141,6 +152,9 @@ function LoginForm() {
   );
 }
 
+// Import SimpleButton Component
+import SimpleButton from './SimpleButton';
+
 function App() {
   const [darkMode, setDarkMode] = useState(false); // Add darkMode state as requested
   const [count, setCount] = useState(0);
@@ -178,9 +192,7 @@ function App() {
         >
           Learn React...
         </a>
-        <button className="toggle-button" onClick={handleToggleDarkMode}>
-          Toggle Dark Mode
-        </button>
+        <SimpleButton onClick={handleToggleDarkMode}>Toggle Dark Mode</SimpleButton>
         <div className="dark-mode-toggle">
           <input
             className="checkbox"
@@ -201,27 +213,31 @@ function App() {
         ) : (
           <span style={{ color: 'red' }}>Logged Out</span>
         )}
+        <SimpleButton onClick={() => AuthService.logout()}>Logout</SimpleButton>
+        {isLoggedIn ? (
+          <SimpleButton onClick={() => window.location.href = "/dashboard"}>
+            Dashboard
+          </SimpleButton>
+        ) : (
+          <div className="footer">
+            <form onSubmit={(event) => event.preventDefault()}>
+              <SimpleButton onClick={handleIncrementCount}>
+                Increment Count
+              </SimpleButton>
+              <p>Count: {count}</p>
+            </form>
+            <SimpleButton onClick={() => window.location.href = "/login"}>
+              Login
+            </SimpleButton> {/* Add login route */}
+            <SimpleButton onClick={() => window.location.href = "/register"}>
+              Register
+            </SimpleButton> {/* Add register route */}
+          </div>
+        )}
       </header>
       <BasicUserForm />
       <UserTable />
       <LoginForm />
-      {isLoggedIn ? ( // Display only when logged in
-        <div>
-          <button onClick={() => AuthService.logout()}>Logout</button>
-          <button onClick={() => window.location.href = "/dashboard"}>Dashboard</button>
-        </div>
-      ) : (
-        <div className="footer">
-          <form onSubmit={(event) => event.preventDefault()}>
-            <button className="count-button" onClick={handleIncrementCount}>
-              Increment Count
-            </button>
-            <p>Count: {count}</p>
-          </form>
-          <button onClick={() => window.location.href = "/login"}>Login</button> {/* Add login route */}
-          <button onClick={() => window.location.href = "/register"}>Register</button> {/* Add register route */}
-        </div>
-      )}
     </div>
   );
 }
