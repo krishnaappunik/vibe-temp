@@ -300,4 +300,31 @@ body {
   #mode-toggle:checked ~ .dark-mode-btn {
     display: block;
   }
+  @media (prefers-color-scheme: dark) {
+    .login-page {
+      background-color: #333;
+      color: white;
+    }
+    .login-form {
+      background-color: #333;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .login-form input {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .login-form input[type="submit"] {
+      background-color: #444;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .login-form input[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+  }
 }

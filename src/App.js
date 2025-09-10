@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import AuthService from './services/AuthService'; // Import AuthService
+import ReactDom from 'react-dom'; // Import ReactDom
 
 function BasicUserForm() {
   const [fullName, setFullName] = useState('');
@@ -141,12 +142,13 @@ function LoginForm() {
 }
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(false); // Add darkMode state as requested
   const [count, setCount] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Add isLoggedIn state
 
   const handleToggleDarkMode = () => {
     setDarkMode(!darkMode);
+    ReactDom.render(<div />, document.getElementById('root')); // Reload on dark mode toggle
   };
 
   const handleIncrementCount = () => {
