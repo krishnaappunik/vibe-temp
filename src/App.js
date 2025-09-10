@@ -169,6 +169,10 @@ function App() {
     setCount(count + 1);
   };
 
+  const handleDecrementCount = () => {
+    setCount(count - 1);
+  };
+
   AuthService.onLoginCallback(user => { // Listen for login callback
     setIsLoggedIn(true);
   });
@@ -176,6 +180,17 @@ function App() {
   AuthService.onLogoutCallback(() => { // Listen for logout callback
     setIsLoggedIn(false);
   });
+
+  const handleIncrementCountButton = () => {
+    setCount(count + 1);
+  };
+
+  const handleDecrementCountButton = () => {
+    setCount(count - 1);
+    if (count < 0) {
+      setCount(0);
+    }
+  };
 
   return (
     <div className={darkMode ? "App dark-mode" : "App"}>
@@ -220,11 +235,14 @@ function App() {
           </SimpleButton>
         ) : (
           <div className="footer">
+            <p>Count: {count}</p>
             <form onSubmit={(event) => event.preventDefault()}>
-              <SimpleButton onClick={handleIncrementCount}>
+              <SimpleButton onClick={handleIncrementCountButton}>
                 Increment Count
               </SimpleButton>
-              <p>Count: {count}</p>
+              <SimpleButton onClick={handleDecrementCountButton}>
+                Decrement Count
+              </SimpleButton>
             </form>
             <SimpleButton onClick={() => window.location.href = "/login"}>
               Login
