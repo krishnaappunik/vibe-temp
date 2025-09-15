@@ -13,6 +13,112 @@
   }
 }
 
+/* Add a wrapper for the dark mode toggle */
+.toggle-dark-mode {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Add a toggle button for dark mode */
+.toggle-dark-mode input[type="checkbox"] {
+  display: none;
+}
+
+/* Create a container for the toggle button labels */
+.toggle-label {
+  margin-left: 10px;
+  color: #fff;
+  font-size: 16px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Style the toggle button labels */
+.toggle-label span {
+  padding: 6px 12px;
+  border: 1px solid #555;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Style the toggle button labels for hover and focus states */
+.toggle-label span:hover, .toggle-label span:focus {
+  border-color: #666;
+  outline: none;
+}
+
+/* Style the toggle button when checked */
+.toggle-dark-mode input[type="checkbox"]:checked + .toggle-label span.first-span {
+  background-color: #333;
+}
+
+.toggle-dark-mode input[type="checkbox"]:checked + .toggle-label span.second-span {
+  background-color: #333;
+}
+
+.toggle-dark-mode input[type="checkbox"]:checked + .toggle-label span.first-span::before, .toggle-dark-mode input[type="checkbox"]:checked + .toggle-label span.second-span::before {
+  content:attr(title);
+  padding: 6px 12px;
+  border: 1px solid #555;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.toggle-dark-mode input[type="checkbox"]:checked + .toggle-label span::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+/* Style the toggle button for dark mode */
+.toggle-dark-mode input[type="checkbox"] + .toggle-label span.first-span {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+/* Style the toggle button for light mode */
+.toggle-dark-mode input[type="checkbox"] + .toggle-label span.second-span {
+  background-color: white;
+  color: black;
+  border-color: white;
+}
+
+/* Style the toggle button for dark mode hover and focus states */
+.toggle-dark-mode input[type="checkbox"]:checked + .toggle-label span.first-span:hover, .toggle-dark-mode input[type="checkbox"]:checked + .toggle-label span.first-span:focus {
+  border-color: #666;
+  outline: none;
+}
+
+.toggle-dark-mode input[type="checkbox"]:checked + .toggle-label span.second-span:hover, .toggle-dark-mode input[type="checkbox"]:checked + .toggle-label span.second-span:focus {
+  border-color: #666;
+  outline: none;
+}
+
+/* Add dark mode styles */
+.dark-mode {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  background-color: #333;
+  color: #fff;
+}
+
+/* Add light mode styles */
+.light-mode {
+  -webkit-filter: none;
+  filter: none;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,7 +130,7 @@
   color: white;
 }
 
-.App-link {
+/App-link {
   color: #61dafb;
 }
 
