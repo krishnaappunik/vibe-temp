@@ -1,3 +1,4 @@
+/* global CSS styles for light and dark mode */
 .App {
   text-align: center;
 }
@@ -13,21 +14,64 @@
   }
 }
 
-.App-header {
+/* Light mode styles */
+.App-header.light {
+  background-color: #f7f7f7;
+}
+
+/* Dark mode styles */
+.App-header.dark {
   background-color: #282c34;
-  min-height: 100vh;
+}
+
+.App-header {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+}
+
+.App-header div {
+  color: #333;
+}
+
+.App-header.header {
+  background-color: #333;
+}
+
+/* Toggle between light and dark mode */
+.switch {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.switch label {
+  padding: 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+}
+
+/* Styles for dark mode */
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Styles for light mode */
+.light-mode {
+  background-color: #f2f2f2;
+  color: #333;
 }
 
 .App-link {
   color: #61dafb;
 }
 
+/* Animation for the logo */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
