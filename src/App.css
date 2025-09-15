@@ -24,8 +24,76 @@
   color: white;
 }
 
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.theme-toggle button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.theme-toggle button:hover {
+  color: white;
+}
+
+.dark {
+  background-color: #333;
+}
+
+.dark .App-header {
+  background-color: #444;
+}
+
+.dark .App {
+  background-color: #333;
+}
+
+.dark .App-link {
+  color: #8b9477;
+}
+
+.App-light {
+  background-color: #282c34;
+  color: white;
+}
+
+.App-dark {
+  background-color: #333;
+  color: #8b9477;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
 .App-link {
   color: #61dafb;
+}
+
+.App-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Remove image and link */
+.App-header img {
+  display: none;
+}
+
+.App-header a {
+  display: none;
+}
+
+/* Add new right above the corner toggle button */
+.App-header .theme-toggle {
+  margin-bottom: 20px;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +103,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App-header .project-title {
+  margin-bottom: 20px;
+}
+
+.project-title {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
