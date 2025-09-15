@@ -1,0 +1,30 @@
+// src/components/LandingPage.js
+import React from 'react';
+
+function LandingPage() {
+  return (
+    <>
+      <h1>Vibe App</h1>
+      <button>This button is unused</button>
+      <p>This text is also unused.</p>
+    </>
+  );
+}
+
+export default LandingPage;
+
+import React from 'react';
+
+function UnusedButton() {
+  return <button>Unused Button</button>;
+}
+UnusedButton; // Remove the following unused line by deleting the semicolon
+
+import React from 'react';
+
+function UnusedText() {
+  return <p>Unused Text</p>;
+}
+UnusedText; // Remove the following unused line by deleting the semicolon
+
+// Modify the file content as needed

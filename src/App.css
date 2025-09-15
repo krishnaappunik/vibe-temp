@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #282c34;
 }
 
 .App-logo {
@@ -14,7 +15,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Add dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .App-header {
+    background-color: #444;
+  }
+  .App-link {
+    color: #8b9467;
+  }
+}
+
+.App-footer {
+  color: white;
+}
+
+/* Unused text and button, remove it */
+.App-unused {
+  display: none;
 }
