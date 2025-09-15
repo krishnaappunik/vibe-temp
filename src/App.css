@@ -1,3 +1,4 @@
+/* Global Styles */
 .App {
   text-align: center;
 }
@@ -18,13 +19,96 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* Change to justify content between */
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.panel-container {
+  display: flex;
+}
+
+.left-panel {
+  width: 40%;
+  height: 80vh;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fff;
+}
+
+.right-panel {
+  width: 60%;
+  height: 80vh;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fff;
+}
+
+.left-header {
+  display: flex;
+  justify-content: center;
+}
+
+.right-header {
+  display: flex;
+  justify-content: center;
+}
+
+.left-header h2 {
+  margin: 0;
+}
+
+.right-header h2 {
+  margin: 0;
+}
+
+.Logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.left-panel-content {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
+.right-panel-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Log {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.panel-link {
+  color: #61dafb;
+}
+
+.log-link {
   color: #61dafb;
 }
 
