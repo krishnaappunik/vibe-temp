@@ -4,12 +4,26 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Pass the background color prop to App component
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App backgroundColor="white" />
   </React.StrictMode>
 );
+
+// App.js
+import React from 'react';
+
+function App(props) {
+  return (
+    <div style={{ backgroundColor: props.backgroundColor }}>
+      {/* Your JSX code here */}
+    </div>
+  );
+}
+
+export default App;
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
