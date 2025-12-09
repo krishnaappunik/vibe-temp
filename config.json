@@ -1,0 +1,1 @@
+Ensure all JSON objects are properly formatted and closed. For example, {"key": "value"} should be correctly closed and nested.
